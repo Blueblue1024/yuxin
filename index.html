@@ -9,6 +9,115 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>相遇|相识|相知|相爱</title>
 	<link rel="stylesheet" href="./css/all.min.css" >
+
+	<!-- 再写你自己的覆盖样式（就是这段） -->
+    <style>
+	/* 1. 全局文字稍微收一点，更适合长文 */
+	.flowtime p {
+		font-size: 1.4rem;
+		line-height: 1.9rem;
+		color: #333;
+	}
+	.flowtime h3 {
+		font-size: 2.1rem;
+		color: #5a2a2a;
+	}
+
+	/* 2. 首页大标题 */
+	.page-1 .text1 {
+		font-size: 3.6em;
+		color: #ff4d4f;
+		line-height: 1.6em;
+		margin: 2.5em auto 0;
+		text-align: center;
+	}
+	.page-1 .text2 {
+		font-size: 1.4em;
+		margin: 1.2em auto 0;
+		text-align: center;
+	}
+
+	/* 3. 关键：限制所有图片的最大高度，避免超出一屏
+			70vh = 视口高度的 70%，剩下 30% 给文字和间距
+	*/
+	.ft-page img {
+		height: auto !important;     /* 不强制高度，按比例缩放 */
+		width: auto;
+		max-width: 100%;             /* 不超过页面宽度 */
+		max-height: 70vh;            /* 不超过视口高度的 70% */
+	}
+
+	/* 左图右字：贴左边一点，留空间给文字 */
+	.left-img img {
+		position: absolute;
+		left: 0;
+		top: 15%;                    /* 图片整体往下挪一点 */
+		max-height: 70vh;            /* 和上面保持一致 */
+	}
+
+	/* 右图左字：贴右边一点 */
+	.right-img img {
+		position: absolute;
+		right: 0;
+		top: 15%;
+		max-height: 70vh;
+	}
+
+	/* 整屏大图：尽量占满，但仍保证整张图在一屏内 */
+	.full-img img {
+		position: relative;
+		display: block;
+		margin: 0 auto;
+		width: auto;                 /* 不强制铺满宽度，防止太高 */
+		max-width: 100%;
+		max-height: 90vh;            /* 比普通图大一点，但仍不超过一屏 */
+	}
+
+
+	.section-2 .ft-page[data-id="page-6"] img {
+	position: relative;      /* 覆盖 right-img 里原来的 absolute 定位 */
+	display: block;
+	margin: 10vh auto 0;     /* 上边留一点空白，水平居中 */
+	width: auto;
+	max-width: 70vw;         /* 宽度占屏幕宽度的 70% 左右，可以自己改 60~80 */
+	max-height: 70vh;        /* 高度最多占屏幕高度的 70%，避免被底部截断 */
+	}
+
+	/* 一行多图的容器：用 flex 横向排 */
+	.img-row {
+	display: flex;
+	justify-content: center;   /* 居中 */
+	align-items: flex-start;
+	}
+
+	/* 一行里的每张图：只限制最大宽高，不固定宽高 → 不会变形 */
+	.img-row img {
+	flex: 0 0 auto;
+	height: auto !important;   /* 强制等比缩放 */
+	width: auto;
+	max-width: 70%;            /* 两张图一行时，每张最多占 45% 宽 */
+	max-height: 70vh;          /* 高度最多占屏幕 40%，避免超出一屏 */
+	}
+
+	/* 9-3 那一页：图片放到正中间并放大 */
+	.love-center {
+		position: relative;          /* 作为定位参考 */
+	}
+
+	.love-center img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);  /* 让中心点对准页面中心 */
+
+		width: 80vw;                 /* 想更大就改 90vw/100vw */
+		height: auto;
+		max-width: none;             /* 把前面通用 img 的限制干掉 */
+		max-height: none;
+	}
+
+
+	</style>
 </head>
 <body>
 	<div class="flowtime">
@@ -21,239 +130,287 @@
 				<p class="top-text" id="text-1" contenteditable="true">故事就从这里开始吧，25年6月24日，第一次见到那时的你。</p>
 				<img src="img/1.jpg" tppabs="img/1.jpg"/>
 			</div>
-			<div id="/section-1/page-3" class="ft-page page-3 left-img" data-id="page-3">
+			<div id="/section-1/page-3" class="ft-page page-3 full-img" data-id="page-3">
 				<h3 class="text" id="text-5" contenteditable="true">知性美的身影</h3>
-				<img src="img/2.jpg" tppabs="img/2.jpg"/>
+				<img src="img/1-2.jpg" tppabs="img/1-2.jpg"/>
 			</div>
 			<div id="/section-1/page-4" class="ft-page page-4 " data-id="page-4">
 				<h2 class="top-text" id="text-3" contenteditable="true">第一次发给我的照片，竟然还撤回了</h2>
-				<img src="img/3.jpg" tppabs="img/3.jpg"/>
+				<img src="img/1-3.jpg" tppabs="img/1-3.jpg"/>
 			</div>
 		</div>
 		<div class="ft-section section-2" data-id="section-2">
 			<div id="/section-2/page-1" class="ft-page page-5 " data-id="page-1">
 				<h2 class="center-text" id="text-4" contenteditable="true">嗔怒的样子，给老师看的</h2>
-				<img src="img/4.jpg" tppabs="img/4.jpg"/>
+				<img src="img/2-1.jpg" tppabs="img/2-1.jpg"/>
 			</div>
-			<div id="/section-2/page-2" class="ft-page page-6" data-id="page-2">
-				<h2 class="center-text" id="text-5" contenteditable="true">0很好看的紫色裙子</h2>
-				<img src="img/5.jpg" tppabs="img/5.jpg"/>
+			<div id="/section-2/page-2" class="ft-page page-6 full-img" data-id="page-2">
+				<div class="img-row">
+					<img src="img/2-2.jpg" tppabs="img/2-2.jpg" />
+					<img src="img/2-21.jpg" tppabs="img/2-21.jpg" />
+				</div>
+				<h2 class="below-text"> 
+					<span id="text-5" contenteditable="true">0i很好看的紫色裙子</span>
+				</h2>
 			</div>
-			<div id="/section-2/page-3" class="ft-page page-7 left-img" data-id="page-3">
-				<h3 id="text-6" contenteditable="true">今天的开心是见到了彩虹</h3>
-				<img src="img/7.jpg" tppabs="img/7.jpg"/>
+			<div id="/section-2/page-3" class="ft-page page-7 full-img" data-id="page-3">
+				<h3 id="text-6" contenteditable="true">今天的开心是<br>见到了彩虹</h3>
+				<img src="img/2-3.jpg" tppabs="img/2-3.jpg"/>
 			</div>
 			<div id="/section-2/page-4" class="ft-page page-8 " data-id="page-4">
-				<h3><span id="text-7" contenteditable="true">奖励我的大长腿</span></h3>
-				<img src="img/8.jpg" tppabs="img/8.jpg" />
+				<h3><span id="text-7" contenteditable="true">宝宝第一次给我寄的水果</span></h3>
+				<img src="img/2-4.jpg" tppabs="img/2-4.jpg" />
 			</div>
 			<div id="/section-2/page-5" class="ft-page page-8 full-img" data-id="page-5">
-				<h3 id="text-8" contenteditable="true">终于回青岛啦，离我又近了一步</h3>
-				<img src="img/9.jpg" tppabs="img/9.jpg" />
+				<h3 id="text-8" contenteditable="true">奖励我的大长腿</h3>
+				<img src="img/2-5.jpg" tppabs="img/2-5.jpg" />
 			</div>
-			<div id="/section-2/page-6" class="ft-page page-8 right-img" data-id="page-6">
-				<h3 id="text-9" contenteditable="true">第一次奔现成功记录一下，7月6日/h3>
-				<img src="img/10.jpg" tppabs="img/10.jpg" />
+			<div id="/section-2/page-6" class="ft-page page-8 full-img" data-id="page-6">
+				<h3 id="text-9" contenteditable="true">终于回青岛啦，离我又近了一步</h3>
+				<img src="img/2-6.jpg" tppabs="img/2-6.jpg" />
 			</div>
 		</div>
 		<div class="ft-section section-3" data-id="section-3">
 			<div id="/section-3/page-1" class="ft-page page-11 " data-id="page-1">
-				<h3 id="text-10" contenteditable="true">和花花的合照</h3>
-				<img src="img/11.jpg" tppabs="img/11.jpg"  />
+				<h3 id="text-10" contenteditable="true"> 第一次奔现成功记录一下，7月6日</h3>
+				<img src="img/3-1.jpg" tppabs="img/3-1.jpg"  />
 			</div>
-			<div id="/section-3/page-2" class="ft-page page-12" data-id="page-2">
-				<h3><span id="text-11" contenteditable="true">还有我们的小礼物</span></h3>
-				<img src="img/14.jpg" tppabs="img/14.jpg" />
+			<div id="/section-3/page-2" class="ft-page page-12 full-img" data-id="page-2">
+				<div class="img-row">
+					<img src="img/3-2.jpg" tppabs="img/3-2.jpg" />
+					<img src="img/3-21.jpg" tppabs="img/3-21.jpg" />
+					<img src="img/3-22.jpg" tppabs="img/3-22.jpg" />
+				</div>
+				<h3 class="below-text">
+					<span id="text-11" contenteditable="true">和花花的合照</span>
+				</h3>
 			</div>
 			<div id="/section-3/page-3" class="ft-page page-13" data-id="page-3">
-				<img src="img/15.jpg" tppabs="img/15.jpg"' />
-				<h3 id="text-13" contenteditable="true">出去玩啦，天气很好就是大妈喜欢入境</h3>
+				<img src="img/3-3.jpg" tppabs="img/3-3.jpg"' />
+				<h3 id="text-13" contenteditable="true">还有我们的小礼物</h3>
 			</div>
-			<div id="/section-3/page-4" class="ft-page page-14 left-img" data-id="page-4">
+			<div id="/section-3/page-4" class="ft-page page-14 full-img" data-id="page-4">
+				<h3 id="text-14" contenteditable="true">出去玩啦，天气很好就是大妈喜欢入境</h3>
+				<img src="img/3-4.jpg" tppabs="img/3-4.jpg" />
+			</div>
+			<div id="/section-3/page-5" class="ft-page page-15 full-img" data-id="page-5">
 				<h3 id="text-14" contenteditable="true">情侣的第一场电影，酱园弄</h3>
-				<img src="img/16.jpg" tppabs="img/16.jpg" />
+				<img src="img/3-5.jpg" tppabs="img/3-5.jpg" />
 			</div>
-			<div id="/section-3/page-5" class="ft-page page-15 left-img" data-id="page-5">
-				<h3><span id="text-15" contenteditable="true"> 开放朋友圈的一天</span></h3>
-				<h3><br /><span id="text-16" contenteditable="true">愉快的自拍</span></h3>
-				<img src="img/17.jpg" tppabs="img/17.jpg" />
-			</div>
-			<div id="/section-3/page-6" class="ft-page page-16 left-img" data-id="page-6">
-				<h3><span id="text-17" contenteditable="true">进食啦</span><br /><span id="text-18" contenteditable="true">当时的你竟然还是双马尾</span></h3>
-				<img src="img/18.jpg" tppabs="img/18.jpg" />
+			<div id="/section-3/page-6" class="ft-page page-16 full-img" data-id="page-6">
+				<div class="img-row">
+					<img src="img/3-6.jpg" tppabs="img/3-6.jpg" />
+					<img src="img/3-61.jpg" tppabs="img/3-61.jpg" />
+				</div>
+				<h3><span id="text-17" contenteditable="true">进食啦</span><br /><span id="text-18" contenteditable="true">很好吃的新疆大盘鸡</span></h3>
 			</div>
 			<div id="/section-3/page-7" class="ft-page page-17 top-text" data-id="page-7">
-				<h3 id="text-19" contenteditable="true"> pos摆的不错</h3>
-				<img src="img/19.jpg" tppabs="img/19.jpg" />
+				<h3 id="text-19" contenteditable="true"> 青岛的天空很蓝,夜色很美</h3>
+				<div class="img-row">
+					<img src="img/3-7.jpg" tppabs="img/3-7.jpg" />
+					<img src="img/3-71.jpg" tppabs="img/3-71.jpg" />
+					<img src="img/3-72.jpg" tppabs="img/3-72.jpg" />
+				</div>
 			</div>
 		</div>
 		<div class="ft-section section-4" data-id="section-4">
-			<div id="/section-4/page-1" class="ft-page page-18 " data-id="page-1">
-				<p class="text" id="text-20" contenteditable="true">这一身汉服，好唯美呀</p>
-				<img src="img/20.jpg" tppabs="img/20.jpg"  />
+			<div id="/section-4/page-1" class="ft-page page-15 full-img" data-id="page-1">
+				<h3><span id="text-15" contenteditable="true"> 惬意的一天</span></h3>
+				<h3><br /><span id="text-16" contenteditable="true">密室大逃脱</span></h3>
+				<img src="img/4-1.jpg" tppabs="img/4-1.jpg" />
 			</div>
 			<div id="/section-4/page-2" class="ft-page page-19" data-id="page-2">
-				<h3 id="text-21" contenteditable="true">要毕业啦，愉快的笑容</h3>
-				<img src="img/21.jpg" tppabs="img/21.jpg" />
+				<h3 id="text-21" contenteditable="true">进军VCR的第一天，其实还可以</h3>
+				<img src="img/4-2.jpg" tppabs="img/4-2.jpg" />
 			</div>
-			<div id="/section-4/page-3" class="ft-page page-20 center-img" data-id="page-3">
-				<h2><span id="text-22" contenteditable="true">哈哈哈哈哈大家闺秀，温文尔雅</span></h2>
-				<img src="img/22.jpg" tppabs="img/22.jpg" />
+			<div id="/section-4/page-3" class="ft-page page-20 full-img" data-id="page-3">
+				<h2><span id="text-22" contenteditable="true">开放朋友圈的一天，愉快的自拍</span></h2>
+				<img src="img/4-3.jpg" tppabs="img/4-3.jpg" />
 			</div>
 			<div id="/section-4/page-4" class="ft-page page-21" data-id="page-4">
-				<h3 id="text-23" contenteditable="true">依稀能看出你的样子</h3>
-				<img src="img/24.jpg" tppabs="img/24.jpg" />
+				<h3 id="text-23" contenteditable="true">进食啦，当时的你竟然是双马尾！！！</h3>
+				<img src="img/4-4.jpg" tppabs="img/4-4.jpg" />
 			</div>
-			<div id="/section-4/page-5" class="ft-page page-22 left-img" data-id="page-5">
-				<h3 id="text-24" contenteditable="true">异地时的日常联系</h3>
-				<img src="img/25.jpg" tppabs="img/25.jpg" />
+			<div id="/section-4/page-5" class="ft-page page-22 full-img" data-id="page-5">
+				<h3 id="text-24" contenteditable="true">pos白的不错</h3>
+				<img src="img/4-5.jpg" tppabs="img/4-5.jpg" />
 			</div>
-			<div id="/section-4/page-6" class="ft-page page-23 left-img" data-id="page-6">
-				<h3 id="text-25" contenteditable="true">集智慧与美貌一身的写真合集</h3>
-				<img src="img/26.jpg" tppabs="img/26.jpg" />
+			<div id="/section-4/page-6" class="ft-page page-23 full-img" data-id="page-6">
+				<h3 id="text-25" contenteditable="true">这一身汉服，好唯美呀</h3>
+				<img src="img/4-6.jpg" tppabs="img/4-6.jpg" />
 			</div>
 			<div id="/section-4/page-7" class="ft-page page-24 " data-id="page-7">	
-				<h3 id="text-26" contenteditable="true">和同学一起好开心呀</h3>
-				<img src="img/32.jpg" tppabs="img/32.jpg" />
+				<h3 id="text-26" contenteditable="true">要毕业啦，愉快的笑容</h3>
+				<img src="img/4-7.jpg" tppabs="img/4-7.jpg" />
 			</div>
 		</div>
 		<div class="ft-section section-5" data-id="section-5">
-			<div id="/section-5/page-1" class="ft-page page-25 left-img" data-id="page-1">
-				<h3><span id="text-27" contenteditable="true">洪崖洞</span><br /><span id="text-28" contenteditable="true">美人与美景</span></h3>
-				<img src="img/33.jpg" tppabs="img/33.jpg" />
+			<div id="/section-5/page-1" class="ft-page page-25 full-img" data-id="page-1">
+				<h3><span id="text-27" contenteditable="true">哈哈哈哈哈大家闺秀，<br>温文尔雅</h3>
+				<div class="img-row">
+					<img src="img/5-1.jpg" tppabs="img/5-1.jpg" />
+					<img src="img/5-11.jpg" tppabs="img/5-11.jpg" />
+				</div>
 			</div>
 			<div id="/section-5/page-2" class="ft-page page-26 top-text" data-id="page-2">
-				<h3 id="text-29" contenteditable="true">一身黑装，酷酷的 </h3>
-				<img src="img/34.jpg" tppabs="img/34.jpg" />
+				<h3 id="text-29" contenteditable="true">依稀能看出你的样子</h3>
+				<img src="img/5-2.jpg" tppabs="img/5-2.jpg" />
 			</div>
-			<div id="/section-5/page-3" class="ft-page page-27 right-img" data-id="page-3">
-				<h3 id="text-30" contenteditable="true">小猪属于你，</span><br /><span id="text-30-1" contenteditable="true">你属于我</span></h3>
-				<img src="img/35.jpg" tppabs="img/35.jpg"  />
+			<div id="/section-5/page-3" class="ft-page page-27 full-img" data-id="page-3">
+				<h3><span id="text-30" contenteditable="true">异地时的日常联系</h3>
+				<img src="img/5-3.jpg" tppabs="img/5-3.jpg" />
 			</div>
-			<div id="/section-5/page-4" class="ft-page page-28" data-id="page-4">
-				<h3 id="text-31" contenteditable="true">你来天津啦</h3>
-				<img src="img/36.jpg" tppabs="img/36.jpg" />
+			<div id="/section-5/page-4" class="ft-page page-28 full-img" data-id="page-4">
+				<h3 id="text-31" contenteditable="true">圣诞美少女</h3>
+				<img src="img/5-4.jpg" tppabs="img/5-4.jpg" />
 			</div>
 			<div id="/section-5/page-5" class="ft-page page-29" data-id="page-5">
-				<h3 id="text-32" contenteditable="true">很自信的演讲</h3>
-				<img src="img/37.jpg" tppabs="img/37.jpg" />
+				<div class="img-row">
+					<img src="img/5-5.jpg" tppabs="img/5-5.jpg" />
+					<img src="img/5-51.jpg" tppabs="img/5-51.jpg" />
+					<img src="img/5-52.jpg" tppabs="img/5-52.jpg" />
+				</div>
+				<h3 id="text-32" contenteditable="true">集智慧与美貌一身的写真合集</h3>
 			</div>
-			<div id="/section-5/page-6" class="ft-page page-30 left-img" data-id="page-6">
-				<h3 id="text-33" contenteditable="true">偷偷拍一张（我猜你又要说不好看）</h3>
-				<img src="img/38.jpg" tppabs="img/38.jpg" />
+			<div id="/section-5/page-6" class="ft-page page-30 full-img" data-id="page-6">
+				<h3 id="text-33" contenteditable="true">可爱，搞笑日常</h3>
+				<div class="img-row">
+					<img src="img/5-6.jpg" tppabs="img/5-6.jpg" />
+					<img src="img/5-61.jpg" tppabs="img/5-61.jpg" />
+				</div>
 			</div>
 			<div id="/section-5/page-7" class="ft-page page-31" data-id="page-7">
-				<h3 id="text-34" contenteditable="true">来张你自己满意的</h3>
-				<img src="img/39.jpg" tppabs="img/39.jpg" />
+				<img src="img/5-7.jpg" tppabs="img/5-7.jpg" />
+				<h3 id="text-34" contenteditable="true">小猪属于你，你属于我</h3>
 			</div>
 		</div>
 		<div class="ft-section section-6" data-id="section-6">
 			<div id="/section-6/page-1" class="ft-page page-32" data-id="page-1">
-				<h3 id="text-35" contenteditable="true">可爱，搞笑日常</h3>
-				<img src="img/30.jpg" tppabs="img/30.jpg"  />
+				<h3 id="text-35" contenteditable="true">我的第一个屏保</h3>
+				<img src="img/6-1.jpg" tppabs="img/6-1.jpg"  />
 			</div>
 			<div id="/section-6/page-2" class="ft-page page-33 top-text" data-id="page-2">
-				<h3 id="text-36" contenteditable="true">肤如凝脂</h3>
-				<img src="img/40.jpg" tppabs="img/40.jpg" />
+				<h3 id="text-36" contenteditable="true">和同学一起好开心呀</h3>
+				<img src="img/6-2.jpg" tppabs="img/6-2.jpg" />
 			</div>
-			<div id="/section-6/page-3" class="ft-page page-34 left-img" data-id="page-3">
-				<h3 id="text-37" contenteditable="true">出发去找你啦</h3>
-				<img src="img/41.jpg" tppabs="img/41.jpg" />
+			<div id="/section-6/page-3" class="ft-page page-34 full-img" data-id="page-3">
+				<h3 id="text-37" contenteditable="true">洪崖洞</h3>
+				<img src="img/6-3.jpg" tppabs="img/6-3.jpg" />
 			</div>
-			<div id="/section-6/page-4" class="ft-page page-35" data-id="page-4">
-				<h3><span id="text-38" contenteditable="true">别的不说</span><br /><span id="text-39" contenteditable="true">先来个吃的</span><br /><span id="text-40" contenteditable="true">甜一下</span></h3>
-				<img src="img/42.jpg" tppabs="img/42.jpg" />
+			<div id="/section-6/page-4" class="ft-page page-35 full-img" data-id="page-4">
+				<h3><span id="text-38" contenteditable="true">一身黑装，酷酷的</span></h3>
+				<img src="img/6-4.jpg" tppabs="img/6-4.jpg" />
 			</div>
 			<div id="/section-6/page-5" class="ft-page page-36 full-img" data-id="page-5">
-				<h3 id="text-41" contenteditable="true">隐隐约约</h3>
-				<img src="img/1_35.jpg" tppabs="img/1_35.jpg" />
+				<h3 id="text-41" contenteditable="true">来杭州游玩啦（天气太热，只能在酒店啦 汗颜）</h3>
+				<img src="img/6-5.jpg" tppabs="img/6-5.jpg" />
 			</div>
-			<div id="/section-6/page-6" class="ft-page page-37 left-img" data-id="page-6">
-				<h3 id="text-42" contenteditable="true">我的拍照，你的美，完美呈现</h3>
-				<img src="img/1_36.jpg" tppabs="img/1_36.jpg" />
+			<div id="/section-6/page-6" class="ft-page page-37 full-img" data-id="page-6">
+				<div class="img-row">
+					<img src="img/6-6.jpg" tppabs="img/6-6.jpg" />
+					<img src="img/6-61.jpg" tppabs="img/6-61.jpg" />
+					<img src="img/6-62.jpg" tppabs="img/6-62.jpg" />
+				</div>
+				<h3 id="text-42" contenteditable="true">错过的杭州景色，下次补给你</h3>
 			</div>
-			<div id="/section-6/page-7" class="ft-page page-38 bottom-text" data-id="page-7">
-				<img src="img/1_37.jpg" tppabs="img/1_37.jpg" />
-				<h3 id="text-43" contenteditable="true">心中有你，运气自然不会差</h3>
+			<div id="/section--6/page-7" class="ft-page page-38 full-img" data-id="page-7">
+				<h3 id="text-43" contenteditable="true">你来天津啦<br>爱情就像花草一样，需要用包容来浇灌</h3>
+				<img src="img/6-7.jpg" tppabs="img/6-7.jpg" />
 			</div>
 		</div>
 		<div class="ft-section section-7" data-id="section-7">
-			<div id="/section-7/page-1" class="ft-page page-39 left-img" data-id="page-1">
-				<h3 id="text-44" contenteditable="true">因为有你，风景才更秀丽</h3>
-				<img src="img/1_38.jpg" tppabs="img/1_38.jpg" />
+			<div id="/section-7/page-1" class="ft-page page-39 full-img" data-id="page-1">
+				<h3 id="text-44" contenteditable="true">很自信的演讲</h3>
+				<img src="img/7-1.jpg" tppabs="img/7-1.jpg" />
 			</div>
-			<div id="/section-7/page-2" class="ft-page page-40" data-id="page-2">
-				<h3 id="text-45" contenteditable="true">一起过生日，吃蛋糕</h3>
-				<img src="img/1_39.jpg" tppabs="img/1_39.jpg"  />
+			<div id="/section-7/page-2" class="ft-page page-40 full-img" data-id="page-2">
+				<div class="img-row">
+					<img src="img/7-21.jpg" tppabs="img/7-21.jpg" />
+					<img src="img/7-2.jpg" tppabs="img/7-2.jpg" />
+				</div>
+				<h3 class='below-text'>
+					<span id="text-45" contenteditable="true">天津的夜景也是不错的</span>
+				</h3>
 			</div>
 			<div id="/section-7/page-3" class="ft-page page-41" data-id="page-3">
-			    <h3 id="text-46" contenteditable="true">000000000第一次做椒盐排骨</h3>
-				<img src="img/1_40.jpg" tppabs="img/1_40.jpg" class='img1'/>	
+			    <h3 id="text-46" contenteditable="true">偷偷拍一张（我猜你又要说不好看）</h3>
+				<img src="img/7-3.jpg" tppabs="img/7-3.jpg" class='img1'/>	
 			</div>
-			<div id="/section-7/page-4" class="ft-page page-42 center-img" data-id="page-4"> 
-                <img src="img/1_41.jpg" tppabs="img/1_41.jpg"  />			
-				<h3><span id="text-47" contenteditable="true"></span><br /><span id="text-48" contenteditable="true">第一次和书宇吃烧烤+炒河粉</span></h3>	
-				
+			<div id="/section-7/page-4" class="ft-page page-42 full-img" data-id="page-4"> 
+                <img src="img/7-4.jpg" tppabs="img/7-4.jpg"  />			
+				<h3 id="text-48" contenteditable="true">来张你自己满意的</h3>	
 			</div>
 			<div id="/section-7/page-5" class="ft-page page-43" data-id="page-5">
-				<img src="img/1_42.jpg" tppabs="img/1_42.jpg" />
-				<h3 id="text-49" contenteditable="true">希望书宇可以一直年轻</h3>
+				<img src="img/7-5.jpg" tppabs="img/7-5.jpg" />
+				<h3 id="text-49" contenteditable="true">肤如凝脂</h3>
 			</div>
-			<div id="/section-7/page-6" class="ft-page page-44 left-img" data-id="page-6">
-				<h3><span id="text-50" contenteditable="true">爱情就像花草一样</span><br /><span id="text-51" contenteditable="true">需要用包容来浇灌</span></h3>
-				<img src="img/1_43.jpg" tppabs="img/1_43.jpg" />
+			<div id="/section-7/page-6" class="ft-page page-44 full-img" data-id="page-6">
+				<h3 id="text-50" contenteditable="true">我的生日礼物，愿得一人心，白首不分离。</h3>
+				<img src="img/7-6.jpg" tppabs="img/7-6.jpg" />
 			</div>
-			<div id="/section-7/page-7" class="ft-page page-45 left-img" data-id="page-7">
-				<h3><span id="text-52" contenteditable="true">穿插一张我的照片</span><br /><span id="text-53" contenteditable="true"></span></h3>
-				<img src="img/1_44.jpg" tppabs="img/1_44.jpg" />
+			<div id="/section-7/page-7" class="ft-page page-45 full-img" data-id="page-7">
+				<h3><span id="text-52" contenteditable="true">出发去找你啦</h3>
+				<img src="img/7-7.jpg" tppabs="img/7-7.jpg" />
 			</div>
 		</div>
 		<div class="ft-section section-8" data-id="section-8">
-			<div id="/section-8/page-1" class="ft-page page-46" data-id="page-1">
-				<img src="img/1_45.jpg" tppabs="img/1_45.jpg" />
+			<div id="/section-8/page-1" class="ft-page page-46 full-img" data-id="page-1">
+				<img src="img/8-1.jpg" tppabs="img/8-1.jpg" />
 				<h3>
-					<span id="text-54" contenteditable="true">一起吃海底捞</span>
+					<span id="text-54" contenteditable="true">别的不说，先来个吃的，甜一下</span>
 				</h3>
 			</div>
-			<div id="/section-8/page-2" class="ft-page page-47 top-text" data-id="page-2">
-				<img src="img/1_46.jpg" tppabs="img/1_46.jpg" />
+			<div id="/section-8/page-2" class="ft-page page-47 top-text full-img" data-id="page-2">
+				<img src="img/8-2.jpg" tppabs="img/8-2.jpg" />
 				<h3>
-					<span id="text-58" contenteditable="true">啊啊啊，</span>
-					<span id="text-59" contenteditable="true">这个涂鸦也太有气质了</span>
+					<span id="text-58" contenteditable="true">我在重庆</span>
 			</div>
-			<div id="/section-8/page-3" class="ft-page page-48 left-img" data-id="page-3">
-				<p><span id="text-62" contenteditable="true">一起喝蜜雪冰城</span></p>
-				<img src="img/1_47.jpg" tppabs="img/1_47.jpg"  />
+			<div id="/section-8/page-3" class="ft-page page-48" data-id="page-3">
+				<p><span id="text-62" contenteditable="true">一起品尝美食</span></p>
+				<img src="img/8-3.jpg" tppabs="img/8-3.jpg"  />
 			</div>
 			<div id="/section-8/page-4" class="ft-page page-49 " data-id="page-4">
-				<h3><span id="text-64" contenteditable="true">愿得一人心，白首不分离。</span></h3>
-				<img src="img/1_48.jpg" tppabs="img/1_48.jpg" />
+				<h3><span id="text-64" contenteditable="true">一起逛动物园</span></h3>
+				<div class="img-row">
+					<img src="img/8-4.jpg" tppabs="img/8-4.jpg" />
+					<img src="img/8-41.jpg" tppabs="img/8-41.jpg" />
+					<img src="img/8-42.jpg" tppabs="img/8-42.jpg" />
+				</div>
 			</div>
 			<div id="/section-8/page-5" class="ft-page page-50" data-id="page-5">
-				<p class='text' id="text-66" contenteditable="true">21年2月21日，我们一起去富乐山登富乐阁。</p>
-				<img src="img/1_49.jpg" tppabs="img/1_49.jpg" class='img1' />
+				<div class="img-row">
+					<img src="img/8-5.jpg" tppabs="img/8-5.jpg" />
+					<img src="img/8-51.jpg" tppabs="img/8-51.jpg" />
+					<img src="img/8-52.jpg" tppabs="img/8-52.jpg" />
+				</div>
+				<h3 class='below-text'>
+					<span id="text-66" contenteditable="true">重庆的风景<br>因为有你，才更秀丽</span>
+				</h3>
 			</div>
 			<div id="/section-8/page-6" class="ft-page page-51" data-id="page-6">
 				<p><span id="text-67" contenteditable="true">永远有多远？</span><br />
 				<span id="text-68" contenteditable="true">比时间多一秒就是永远，我会永远爱你</span><br />
 				<span id="text-69" contenteditable="true">世界有多大？</span><br />
 				<span id="text-70" contenteditable="true">你走到哪里，世界就有多大</span></p>
+				<img src="img/8-6.jpg" tppabs="img/8-6.jpg" class='img1' />
 			</div>
 		</div>
 		<div class="ft-section section-9" data-id="section-9">
 			<div id="/section-9/page-1" class="ft-page page-52 " data-id="page-1">
-				<h3 id="text-71" contenteditable="true">随手拍照记录的书宇</h3>
-				<img src="img/1_50.jpg" tppabs="img/1_50.jpg"  />
+				<h3 id="text-71" contenteditable="true">期待我们下次去</h3>
+				<img src="img/9-1.jpg" tppabs="img/9-1.jpg"  />
 			</div>
-			<div id="/section-9/page-2" class="ft-page page-53 right-img" data-id="page-2">
-				<img src="img/1_52.jpg" tppabs="img/1_52.jpg" alt='happy birthday' />
-				<h3 id="text-72" contenteditable="true">建立情侣关系啦</h3>
+			<div id="/section-9/page-2" class="ft-page page-53 full-img" data-id="page-2">
+				<h3 id="text-72" contenteditable="true">happy birthday</h3>
+				<img src="img/9-2.jpg" tppabs="img/9-2.jpg"/>
 			</div>
-			<div id="/section-9/page-3" class="ft-page page-54 center-img" data-id="page-3" >
-				<div class="center-img">I love you </div>
+			<div id="/section-9/page-3" class="ft-page page-54 full-img love-center" data-id="page-3" >
+				<img src="img/9-3.jpg"
+					tppabs="img/9-3.jpg"
+					style="width:90vw; height:auto; display:block; margin:0 auto;" />
+
 			</div>
 			<div id="/section-9/page-4" class="ft-page page-55 right-img" data-id="page-4">
-				<img src="img/1_51.jpg" tppabs="img/1_51.jpg" />
 				<p class="text">
 					<span id="text-73" contenteditable="true">长长久久。</span><br />
 					<span id="text-74" contenteditable="true">恩恩爱爱。</span><br />
